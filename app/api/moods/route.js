@@ -13,12 +13,12 @@ export async function GET() {
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { mood, note } = body;
-    const time = Date.now(); // Current timestamp in milliseconds
+    const {mood, note} = body;
+    //const time = Date.now(); // Current timestamp in milliseconds
 
     const result = await sql`
-      INSERT INTO moods (mood, note, time)
-      VALUES (${mood}, ${note || null}, ${time})
+      INSERT INTO moods (mood, note)
+      VALUES (${mood}, ${note || null})
       RETURNING *;
     `;
     return Response.json(result[0]);
