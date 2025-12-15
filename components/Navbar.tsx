@@ -6,7 +6,8 @@ export default function Navbar() {
     { href: "/checkin", label: "Check-in" },
     { href: "/community", label: "Community" },
     { href: "/resources", label: "Resources" },
-    { href: "/login", label: "Login" }
+    { href: "/login", label: "Login" },
+    { href: "/streak", label: "Streak" },
   ];
 
   return (
@@ -17,7 +18,7 @@ export default function Navbar() {
         backgroundColor: "#ffffff",
         display: "flex",
         justifyContent: "center",
-        gap: "20px"
+        gap: "20px",
       }}
     >
       {links.map((link) => (
@@ -31,7 +32,7 @@ export default function Navbar() {
             fontWeight: 600,
             padding: "8px 18px",
             borderRadius: "999px",
-            transition: "all 0.25s ease"
+            transition: "all 0.25s ease",
           }}
           onMouseEnter={(e) => {
             const el = e.currentTarget;
