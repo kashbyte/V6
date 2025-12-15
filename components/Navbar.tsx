@@ -5,7 +5,8 @@ export default function Navbar() {
     { href: "/", label: "Home" },
     { href: "/checkin", label: "Check-in" },
     { href: "/community", label: "Community" },
-    { href: "/resources", label: "Resources" }
+    { href: "/resources", label: "Resources" },
+    { href: "/login", label: "Login" }
   ];
 
   return (

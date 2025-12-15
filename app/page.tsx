@@ -2,7 +2,6 @@
 import Banner from "../components/Banner";
 
 
-
 export default function Home() {
   const buttonStyle: React.CSSProperties = {
     display: "inline-block",
