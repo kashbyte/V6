@@ -13,7 +13,7 @@ export default function FeedCard({ post }: { post: Post }) {
         border: "1px solid #ddd",
         borderRadius: "8px",
         padding: "12px",
-        marginBottom: "12px"
+        marginBottom: "12px",
       }}
     >
       <div style={{ fontSize: "24px" }}>{post.mood}</div>

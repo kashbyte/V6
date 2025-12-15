@@ -1,6 +1,4 @@
-import { neon } from "@neondatabase/serverless";
-
-const sql = neon(process.env.NEON_CONNECTION);
+import { sql } from "@/lib/db";
 
 export async function GET() {
   try {
@@ -15,14 +13,14 @@ export async function GET() {
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { mood, note, user_id } = body;
+    const { mood, note } = body;
+    const time = Date.now(); // Current timestamp in milliseconds
 
     const result = await sql`
-      INSERT INTO moods (mood, note, user_id)
-      VALUES (${mood}, ${note || null}, ${user_id || null})
+      INSERT INTO moods (mood, note, time)
+      VALUES (${mood}, ${note || null}, ${time})
       RETURNING *;
     `;
-
     return Response.json(result[0]);
   } catch (err) {
     console.error(err);

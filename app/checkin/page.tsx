@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import CheckInForm, { MoodEntry as MoodEntryType } from "../../components/CheckInForm";
+import CheckInForm, {
+  MoodEntry as MoodEntryType,
+} from "../../components/CheckInForm";
 
 export default function CheckInPage() {
   const [moods, setMoods] = useState<MoodEntryType[]>([]);
@@ -26,8 +28,22 @@ export default function CheckInPage() {
   }
 
   return (
-    <main style={{ maxWidth: "600px", margin: "0 auto", padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <h1 style={{ textAlign: "center", fontSize: "28px", color: "#111111", marginBottom: "20px" }}>
+    <main
+      style={{
+        maxWidth: "600px",
+        margin: "0 auto",
+        padding: "20px",
+        fontFamily: "Arial, sans-serif",
+      }}
+    >
+      <h1
+        style={{
+          textAlign: "center",
+          fontSize: "28px",
+          color: "#111111",
+          marginBottom: "20px",
+        }}
+      >
         Daily Check-in
       </h1>
 
@@ -35,7 +51,15 @@ export default function CheckInPage() {
 
       {moods.length > 0 && (
         <>
-          <h2 style={{ marginTop: "40px", marginBottom: "20px", color: "#334155" }}>Recent Check-ins</h2>
+          <h2
+            style={{
+              marginTop: "40px",
+              marginBottom: "20px",
+              color: "#334155",
+            }}
+          >
+            Recent Check-ins
+          </h2>
 
           {moods.map((mood) => (
             <div
@@ -48,11 +72,15 @@ export default function CheckInPage() {
                 boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
                 display: "flex",
                 flexDirection: "column",
-                gap: "6px"
+                gap: "6px",
               }}
             >
               <div style={{ fontSize: "24px" }}>{mood.mood}</div>
-              {mood.note && <div style={{ color: "#334155", fontSize: "14px" }}>{mood.note}</div>}
+              {mood.note && (
+                <div style={{ color: "#334155", fontSize: "14px" }}>
+                  {mood.note}
+                </div>
+              )}
               <div style={{ fontSize: "12px", color: "#888" }}>
                 {new Date(mood.time).toLocaleString()}
               </div>
