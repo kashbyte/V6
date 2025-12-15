@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import FeedCard from "../../components/FeedCard";
 
 type Post = {
   id: string;
@@ -65,7 +64,7 @@ export default function CommunityPage() {
           >
             <div style={{ fontSize: "24px" }}>{post.mood}</div>
             {post.note && <div style={{ color: "#334155", fontSize: "14px" }}>{post.note}</div>}
-            <div style={{ fontSize: "12px", color: "#888" }}>
+            <div style={{ fontSize: "12px", color: "#888888ff" }}>
               Posted by {post.session_id} at {new Date(post.time).toLocaleString()}
             </div>
           </div>

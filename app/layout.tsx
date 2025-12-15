@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import './globals.css';
+//import Home from "./homepage/page";
 
 export const metadata = {
   title: "SafeSpace",
