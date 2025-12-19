@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import CheckInForm, {
   MoodEntry as MoodEntryType,
 } from "../../components/CheckInForm";
+import ProtectedPage from "../../components/ProtectedPage";
 
 export default function CheckInPage() {
   const [moods, setMoods] = useState<MoodEntryType[]>([]);
@@ -28,6 +29,7 @@ export default function CheckInPage() {
   }
 
   return (
+    <ProtectedPage>
     <main
       style={{
         maxWidth: "600px",
@@ -89,5 +91,6 @@ export default function CheckInPage() {
         </>
       )}
     </main>
+    </ProtectedPage>
   );
 }

@@ -1,20 +1,29 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import Navbar from "../components/Navbar";
 import './globals.css';
 //import Home from "./homepage/page";
+import ClientProvider from "../components/ClientProvider";
 
-export const metadata = {
-  title: "SafeSpace",
-  description: "Anonymous mental health check-in platform"
-};
+// export const metadata = {
+//   title: "SafeSpace",
+//   description: "Anonymous mental health check-in platform"
+// };
 
 export default function RootLayout({
   children
 }: {
   children: React.ReactNode;
 }) {
+
+  const pathname = usePathname();
+
+  const showNavbar = pathname !== "/login"; // hide navbar on login
   return (
     <html lang="en">
       <body style={{ fontFamily: "sans-serif", margin: 0, backgroundColor: "#F2F0EF" }}>
+        <ClientProvider>
         {/* Crisis Banner */}
         <div
           style={{
@@ -27,8 +36,8 @@ export default function RootLayout({
           If you are in immediate danger, contact 995 for SCDF Ambulance and Fire Service.
         </div>
 
-       {/* Navigation */}
-        <Navbar />
+        {/* Navigation */}
+        {showNavbar && <Navbar />} {/* Only show if not login */}
 
         {/* Page Content */}
         <main style={{ maxWidth: "800px", margin: "0 auto", padding: "20px" }}>
@@ -47,6 +56,7 @@ export default function RootLayout({
         >
           SafeSpace is a support tool and not a replacement for professional medical help.
         </footer>
+        </ClientProvider>
       </body>
     </html>
   );
