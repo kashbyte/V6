@@ -1,8 +1,23 @@
 import { sql } from "@/lib/db";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export async function GET() {
   try {
-    const result = await sql`SELECT * FROM moods ORDER BY time DESC LIMIT 50;`;
+    const session = await getServerSession(authOptions);
+    
+    if (!session?.user?.id) {
+      return Response.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    // Get moods for this user only
+    const result = await sql`
+      SELECT * FROM moods 
+      WHERE user_id = ${session.user.id}
+      ORDER BY time DESC 
+      LIMIT 50;
+    `;
+    
     return Response.json(result);
   } catch (err) {
     console.error(err);
@@ -12,15 +27,21 @@ export async function GET() {
 
 export async function POST(request) {
   try {
+    const session = await getServerSession(authOptions);
+    
+    if (!session?.user?.id) {
+      return Response.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const body = await request.json();
-    const {mood, note} = body;
-    //const time = Date.now(); // Current timestamp in milliseconds
+    const { mood, note } = body;
 
     const result = await sql`
-      INSERT INTO moods (mood, note)
-      VALUES (${mood}, ${note || null})
+      INSERT INTO moods (user_id, mood, note)
+      VALUES (${session.user.id}, ${mood}, ${note || null})
       RETURNING *;
     `;
+    
     return Response.json(result[0]);
   } catch (err) {
     console.error(err);

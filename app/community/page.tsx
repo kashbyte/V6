@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ProtectedPage from "../../components/ProtectedPage";
 
 type Post = {
   id: string;
@@ -29,6 +30,7 @@ export default function CommunityPage() {
   ]);
 
   return (
+    <ProtectedPage>
     <main
       style={{
         maxWidth: "600px",
@@ -71,5 +73,6 @@ export default function CommunityPage() {
         ))}
       </div>
     </main>
+    </ProtectedPage>
   );
 }
