@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ProtectedPage from "../../components/ProtectedPage";
 
 type Resource = {
   id: string;
@@ -40,6 +41,7 @@ export default function ResourcesPage() {
   const categories = Array.from(new Set(resources.map((r) => r.category)));
 
   return (
+    <ProtectedPage>
     <main style={{ padding: "30px", fontFamily: "Arial, sans-serif" }}>
       <h1 style={{ textAlign: "center", color: "#111111" }}>Resources</h1>
       <p style={{ textAlign: "center", marginBottom: "40px", color: "#555" }}>
@@ -104,5 +106,6 @@ export default function ResourcesPage() {
         </section>
       ))}
     </main>
+    </ProtectedPage>  
   );
 }
