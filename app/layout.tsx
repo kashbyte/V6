@@ -18,7 +18,7 @@ export default function RootLayout({
         style={{
           fontFamily: "sans-serif",
           margin: 0,
-          backgroundColor: "#F2F0EF",
+          backgroundColor: "#f7ebdb",
         }}
       >
         {/* Crisis Banner */}
