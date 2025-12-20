@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import Navbar from "../components/Navbar";
 import './globals.css';
 //import Home from "./homepage/page";
-import ClientProvider from "../components/ClientProvider";
+import { SessionProvider } from "next-auth/react";
 
 // export const metadata = {
 //   title: "SafeSpace",
@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body style={{ fontFamily: "sans-serif", margin: 0, backgroundColor: "#F2F0EF" }}>
-        <ClientProvider>
+        <SessionProvider>
         {/* Crisis Banner */}
         <div
           style={{
@@ -56,7 +56,7 @@ export default function RootLayout({
         >
           SafeSpace is a support tool and not a replacement for professional medical help.
         </footer>
-        </ClientProvider>
+        </SessionProvider>
       </body>
     </html>
   );
