@@ -42,7 +42,7 @@ export default function Navbar() {
             fontWeight: 600,
             padding: "8px 18px",
             borderRadius: "999px",
-            transition: "all 0.25s ease"
+            transition: "all 0.25s ease",
           }}
           onMouseEnter={(e) => {
             const el = e.currentTarget;
