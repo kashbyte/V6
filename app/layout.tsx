@@ -22,7 +22,7 @@ export default function RootLayout({
   const showNavbar = pathname !== "/login"; // hide navbar on login
   return (
     <html lang="en">
-      <body style={{ fontFamily: "sans-serif", margin: 0, backgroundColor: "#F2F0EF" }}>
+      <body style={{ fontFamily: "sans-serif", margin: 0, backgroundColor: "#f7ebdb" }}>
         <SessionProvider>
         {/* Crisis Banner */}
         <div
